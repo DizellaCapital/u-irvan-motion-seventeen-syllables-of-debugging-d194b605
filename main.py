@@ -30,6 +30,13 @@ def main() -> int:
     if tuple(EXPECTED_SYLLABLES) != (5, 7, 5):
         print("FAIL: syllable pattern is not 5-7-5", file=sys.stderr)
         return 1
+    if sum(EXPECTED_SYLLABLES) != 17:
+        print("FAIL: syllable total is not 17", file=sys.stderr)
+        return 1
+    for i, line in enumerate(lines):
+        if not line.strip():
+            print(f"FAIL: line {i + 1} is empty", file=sys.stderr)
+            return 1
     if not (1 <= len(HAIKU) <= 200):
         print(f"FAIL: length {len(HAIKU)} outside 1-200 characters", file=sys.stderr)
         return 1
